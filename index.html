@@ -9,18 +9,16 @@
     
     <style>
         :root {
-            /* Colores extraídos de la tarjeta de Plásticos Santuario */
             --ps-green: #39B54A; 
             --ps-red: #ED1C24;
             --ps-white: #FFFFFF;
-            --ps-dark: #2D2D2D;
+            --ps-dark: #212121;
             --vibras-gold: #FFD700;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
-            background: #e8f5e9;
             background: linear-gradient(135deg, #39B54A 0%, #1b5e20 100%);
             display: flex;
             justify-content: center;
@@ -29,58 +27,58 @@
             padding: 15px;
         }
 
-        /* La Gema Card */
         .gema-card {
             width: 100%;
             max-width: 400px;
             background: var(--ps-white);
             border-radius: 35px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
             overflow: hidden;
             position: relative;
             text-align: center;
-            animation: gemaAppear 0.8s ease-out;
+            animation: gemaAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes gemaAppear {
-            from { opacity: 0; transform: scale(0.9) translateY(30px); }
+            from { opacity: 0; transform: scale(0.9) translateY(40px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Header con el Logo del Repositorio */
         .header {
             background: var(--ps-white);
-            padding: 30px 20px;
-            border-bottom: 5px solid var(--ps-green);
+            padding: 35px 20px 20px;
+            border-bottom: 6px solid var(--ps-green);
         }
 
         .logo-main {
             width: 100%;
-            max-width: 280px;
+            max-width: 300px;
             height: auto;
             margin-bottom: 15px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
         .info-header {
-            background: #f9f9f9;
-            padding: 10px;
+            background: #f4fcf4;
+            padding: 12px;
             border-radius: 15px;
-            margin: 0 20px;
+            margin: 0 10px;
+            border: 1px dashed var(--ps-green);
         }
 
         .info-header p {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--ps-green);
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Botones de Acción - Estilo Pinto */
         .action-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            padding: 25px;
+            padding: 25px 25px 15px;
         }
 
         .action-circle {
@@ -89,6 +87,7 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            transition: 0.3s;
         }
 
         .icon-box {
@@ -100,82 +99,93 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             box-shadow: 0 8px 15px rgba(57, 181, 74, 0.3);
-            transition: 0.3s;
+            transition: 0.4s;
         }
 
         .action-circle:hover .icon-box {
             background: var(--ps-red);
-            transform: translateY(-5px);
+            transform: translateY(-8px) rotate(360deg);
+            box-shadow: 0 12px 20px rgba(237, 28, 36, 0.4);
         }
 
         .action-circle span {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--ps-dark);
         }
 
-        /* Menú de Servicios - Estilo Hoyos */
+        .location-btn {
+            margin: 10px 25px 20px;
+            padding: 14px;
+            background: var(--ps-red);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 6px 12px rgba(237, 28, 36, 0.2);
+            transition: 0.3s;
+        }
+
+        .location-btn:hover {
+            background: #c11218;
+            transform: scale(1.03);
+        }
+
         .services-list {
-            padding: 0 25px 20px;
+            padding: 0 25px 30px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .service-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #f1f8f1;
-            padding: 15px 20px;
-            border-radius: 15px;
+            background: #f8fdf8;
+            padding: 16px 20px;
+            border-radius: 18px;
             text-decoration: none;
             color: var(--ps-dark);
             font-weight: 600;
             transition: 0.3s;
-            border-left: 4px solid var(--ps-green);
+            border: 1px solid #eee;
+            border-left: 5px solid var(--ps-green);
         }
 
         .service-item:hover {
             background: var(--ps-green);
             color: white;
-            transform: translateX(8px);
+            transform: translateX(10px);
+            border-left: 5px solid var(--ps-dark);
         }
 
-        /* Dirección con Estilo */
-        .location-tag {
-            margin: 10px 25px;
-            padding: 12px;
-            background: var(--ps-red);
-            color: white;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* Footer Vibras Positivas */
         .footer {
-            padding: 25px;
-            background: #222;
-            color: #888;
+            padding: 30px 20px;
+            background: #1a1a1a;
+            color: #ffffff;
         }
 
         .vibras-logo {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--vibras-gold);
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .copyright {
-            font-size: 0.6rem;
-            line-height: 1.4;
+            font-size: 0.65rem;
+            line-height: 1.6;
+            opacity: 0.7;
+            font-weight: 300;
         }
 
-        /* Control de Suscripción */
         #status-gate { display: none; }
     </style>
 </head>
@@ -200,27 +210,27 @@
                 <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
                 <span>WhatsApp</span>
             </a>
-            <a href="https://www.instagram.com/plasticossantuario" class="action-circle">
+            <a href="https://www.instagram.com/plasticossantuariocaucasia" class="action-circle">
                 <div class="icon-box"><i class="fab fa-instagram"></i></div>
                 <span>Instagram</span>
             </a>
         </div>
 
-        <div class="location-tag">
+        <a href="https://maps.app.goo.gl/yYv3E2p9T2D1B2D1" target="_blank" class="location-btn">
             <i class="fas fa-map-marker-alt"></i> AV. TRONCAL FRENTE AL ÉXITO
-        </div>
+        </a>
 
         <div class="services-list">
             <a href="#" class="service-item">
-                <span>Catálogo de Productos</span>
+                <span><i class="fas fa-box-open" style="margin-right:10px;"></i> Catálogo de Productos</span>
                 <i class="fas fa-chevron-right"></i>
             </a>
-            <a href="https://www.facebook.com/share/1DgYuA2wyb/" class="service-item">
-                <span>Facebook Oficial</span>
+            <a href="https://www.facebook.com/share/1DgYuA2wyb/" target="_blank" class="service-item">
+                <span><i class="fab fa-facebook-f" style="margin-right:15px;"></i> Facebook Oficial</span>
                 <i class="fas fa-chevron-right"></i>
             </a>
             <a href="mailto:plasticossantuariocaucasia@gmail.com" class="service-item">
-                <span>Enviar Email</span>
+                <span><i class="fas fa-envelope" style="margin-right:10px;"></i> Enviar Email</span>
                 <i class="fas fa-chevron-right"></i>
             </a>
         </div>
@@ -236,7 +246,6 @@
     </div>
 
     <script>
-        // Sistema de Control de Suscripción Invisible
         (function() {
             const gate = document.getElementById('status-gate');
             const expireDate = new Date(gate.getAttribute('data-expire'));
@@ -244,27 +253,25 @@
 
             if (today > expireDate) {
                 document.body.innerHTML = `
-                    <div style="text-align:center; color:white; padding:50px; font-family:sans-serif;">
-                        <i class="fas fa-lock" style="font-size:3rem; margin-bottom:20px;"></i>
-                        <h2>Suscripción Vencida</h2>
-                        <p>Contacte a Vibras Positivas para reactivar su Gema Digital.</p>
-                        <br><a href="tel:3117700431" style="color:#FFD700; text-decoration:none;">Llamar a Soporte</a>
+                    <div style="text-align:center; color:white; padding:50px; font-family:sans-serif; background:rgba(0,0,0,0.8); height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                        <i class="fas fa-lock" style="font-size:4rem; margin-bottom:20px; color:#FFD700;"></i>
+                        <h2 style="margin-bottom:10px;">Gema Digital Protegida</h2>
+                        <p style="opacity:0.8;">La suscripción anual de este servicio ha vencido.</p>
+                        <br><a href="tel:3117700431" style="background:#FFD700; color:black; padding:15px 30px; border-radius:30px; text-decoration:none; font-weight:bold;">RENOVAR AHORA</a>
                     </div>`;
             }
 
-            // Animación de entrada para los elementos de la lista
             const items = document.querySelectorAll('.service-item');
             items.forEach((item, index) => {
                 item.style.opacity = '0';
-                item.style.transform = 'translateX(-20px)';
+                item.style.transform = 'translateY(20px)';
                 setTimeout(() => {
-                    item.style.transition = '0.5s ease';
+                    item.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
                     item.style.opacity = '1';
-                    item.style.transform = 'translateX(0)';
-                }, 400 + (index * 150));
+                    item.style.transform = 'translateY(0)';
+                }, 300 + (index * 150));
             });
         })();
     </script>
 </body>
 </html>
-n
